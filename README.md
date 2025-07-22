@@ -70,4 +70,4 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para 
 
 ---
 
-© 2024 Paulo Eduardo Moretti. Todos os direitos reservados.
+© 2024 Paulo Eduardo Moretti & Kaio Roberto Kinoshita. Todos os direitos reservados.
