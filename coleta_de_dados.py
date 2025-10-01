@@ -126,6 +126,7 @@ def extracao_de_dados(page):
         if ('012.075' in linha or '012075' in linha) and '1114/10-I-PM' in linha:
             partes = linha.split()
             dados['ALE I'] = partes[-1]
+            
 
         if ('012.047' in linha or '012047' in linha) and 'PM-NIVEL I' in linha:
             partes = linha.split()
@@ -135,10 +136,18 @@ def extracao_de_dados(page):
             partes = linha.split()
             dados['ALE II'] = partes[-1]
         
+        if ('012.076' in linha or '012076' in linha) and '1114/10-II-PM' in linha:
+            partes = linha.split()
+            dados['ALE II'] = partes[-1]
+            
         if ('012.049' in linha or '012049' in linha) and 'PM-NIVEL III' in linha:
             partes = linha.split()
             dados['ALE III'] = partes[-1]
     
+        if ('012.077' in linha or '012077' in linha) and '1114/10-III-PM' in linha:
+            partes = linha.split()
+            dados['ALE III'] = partes[-1]
+            
     return data_de_pagamento, nome, cpf, dados
 
 #Processamento dos arquivos PDF
@@ -196,13 +205,17 @@ def calcular_reajustes(valores_gratificacoes, ale_50_valor):
                 parse_valor(valores_gratificacoes[i-1].get("1114/10-I-PM")) or
                 parse_valor(valores_gratificacoes[i-1].get("ALE I")) or
                 parse_valor(valores_gratificacoes[i-1].get("ALE II")) or
-                parse_valor(valores_gratificacoes[i-1].get("ALE III"))
+                parse_valor(valores_gratificacoes[i-1].get("1114/10-II-PM")) or
+                parse_valor(valores_gratificacoes[i-1].get("ALE III")) or
+                parse_valor(valores_gratificacoes[i-1].get("1114/10-III-PM"))
             )
             ale_atual = (
                 parse_valor(atual.get("1114/10-I-PM")) or
                 parse_valor(atual.get("ALE I")) or
                 parse_valor(atual.get("ALE II")) or
-                parse_valor(atual.get("ALE III"))
+                parse_valor(atual.get("1114/10-II-PM")) or
+                parse_valor(atual.get("ALE III")) or
+                parse_valor(atual.get("1114/10-III-PM"))
             )
 
             # Exceção: somar metade do ALE anterior se sumiu
